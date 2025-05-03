@@ -29,3 +29,4 @@ resampy==0.3.1
 imageio-ffmpeg==0.4.7
 facexlib==0.3.0
 safetensors
+python-ffmpeg==2.0.10

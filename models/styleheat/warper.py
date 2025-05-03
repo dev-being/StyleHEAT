@@ -71,6 +71,8 @@ class AudioWarper(nn.Module):
     ):
         descriptor = self.audio_encoder(driving_source)
         # print(f'descritor.shape: {descriptor.shape}')
+        print(f'input_image.shape: {input_image.shape}')
+        print("Driving source: ", driving_source)
         output = self.warpping_net(input_image, descriptor)
         output['descriptor'] = descriptor
         return output
