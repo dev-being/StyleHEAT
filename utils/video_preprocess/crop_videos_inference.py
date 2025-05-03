@@ -61,7 +61,7 @@ class Croper:
         shrink = int(np.floor(qsize / output_size * 0.5))
         if shrink > 1:
             rsize = (int(np.rint(float(img.size[0]) / shrink)), int(np.rint(float(img.size[1]) / shrink)))
-            img = img.resize(rsize, Image.ANTIALIAS)
+            img = img.resize(rsize, Image.LANCZOS)
             quad /= shrink
             qsize /= shrink
 
@@ -95,13 +95,13 @@ class Croper:
 
         # img = img.transform((transform_size, transform_size), Image.QUAD, (quad + 0.5).flatten(), Image.BILINEAR)
         # if output_size < transform_size:
-        #     img = img.resize((output_size, output_size), Image.ANTIALIAS)
+        #     img = img.resize((output_size, output_size), Image.LANCZOS)
 
         # Transform.
         def align_func(img):
             img = img.transform((transform_size, transform_size), Image.QUAD, (quad + 0.5).flatten(), Image.BILINEAR)
             if output_size < transform_size:
-                img = img.resize((output_size, output_size), Image.ANTIALIAS)
+                img = img.resize((output_size, output_size), Image.LANCZOS)
             return img
 
         # # Transform.
@@ -113,7 +113,7 @@ class Croper:
         # img = img.transform((transform_size, transform_size), Image.QUAD, (quad + 0.5).flatten(),
         #                     Image.BILINEAR)
         # if output_size < transform_size:
-        #     img = img.resize((output_size, output_size), Image.ANTIALIAS)
+        #     img = img.resize((output_size, output_size), Image.LANCZOS)
 
         # Save aligned image.
         return align_func
